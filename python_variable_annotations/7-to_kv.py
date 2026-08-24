@@ -3,6 +3,6 @@
 from typing import List, Tuple
 
 
-def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
+def to_kv(k: str, v: typing.Union[int, float]) -> typing.Tuple[str, float]:
     """this is the method"""
     return (k, float(v ** 2))
