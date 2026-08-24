@@ -6,5 +6,5 @@ import typing
 def element_length(
     lst: typing.Iterable[typing.Sequence]
 ) -> typing.List[typing.Tuple[typing.Sequence, int]]:
-    """Calculates the length of each sequence element within a generic iterable."""
+    """Calculates the length of each sequence element"""
     return [(i, len(i)) for i in lst]
