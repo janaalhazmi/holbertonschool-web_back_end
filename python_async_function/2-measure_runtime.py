@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """this is the module for task 2"""
 import asyncio
-import time module
+import time
 
 
-wait_n = __import__('1-concurrent_coroutines.py').wait_n
+wait_n = __import__('1-concurrent_coroutines').wait_n
 
 
-asyncio def measure_time(max_delay: int, n: int) -> float:
+def measure_time(max_delay: int, n: int) -> float:
     """this is the method"""
     start = time.perf_counter()
     asyncio.run(wait_n(n, max_delay))
