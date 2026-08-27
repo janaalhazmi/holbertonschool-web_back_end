@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """this is the module for the 3rd task"""
 import asyncio
-import random
+
 
 wait_random = __import__('0-basic_async_syntax').wait_random
 
