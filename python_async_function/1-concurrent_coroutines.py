@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 """this is the module for the second task"""
-
-
 import asyncio
 from typing import List
 import random
