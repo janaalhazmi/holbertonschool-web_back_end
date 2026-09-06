@@ -1,16 +1,9 @@
 #!/usr/bin/env python3
-"""modul for simple pagination"""
+''' Simple pagination '''
 import csv
 import math
-from typing import List
+from typing import List, Tuple
 
-
-
-def index_range(page: int, page_size: int) -> tuple[int, int]:
-    """this is the method"""
-    start_index = (page - 1) * page_size
-    end_index = start_index + page_size
-    return start_index, end_index
 
 class Server:
     """Server class to paginate a database of popular baby names.
@@ -32,11 +25,20 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """this is the method"""
-        assert page > 0 and page is int, "Page number must be greater than zero"
-        assert page_size > 0 and page is int, "Page number must be greater than zero"
-        dataset = self.dataset()
-        start, end = index_range(page, page_size)
-        if start >= len(dataset):
+        ''' def get page '''
+        assert type(page_size) is int and type(page) is int
+        assert page > 0
+        assert page_size > 0
+        self.dataset()
+        i = index_range(page, page_size)
+        if i[0] >= len(self.__dataset):
             return []
-        return dataset[start:end]
+        else:
+            return self.__dataset[i[0]:i[1]]
+
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    ''' De*f index range '''
+    index = page * page_size - page_size
+    index_1 = index + page_size
+    return (index, index_1)
