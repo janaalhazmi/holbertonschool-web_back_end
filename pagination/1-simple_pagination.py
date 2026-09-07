@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """this is the modul"""
 import csv
-import math
 from typing import List, Tuple
 
 
@@ -41,4 +40,3 @@ class Server:
             return []
 
         return data[start:end]
-        
