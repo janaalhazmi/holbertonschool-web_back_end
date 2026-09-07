@@ -1,23 +1,26 @@
 #!/usr/bin/env python3
 """this is the modul"""
-
 import csv
 import math
-from typing import List
+from typing import List, Tuple
 
-index_range = __import__('0-simple_helper_function').index_range
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """calculate start and end indexes"""
+    start_index = (page - 1) * page_size
+    end_index = start_index + page_size
+    return (start_index, end_index)
 
 
 class Server:
-    """Server class to paginate a database of popular baby names."""
+    """server class to paginate"""
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
-        ''' Initialize instance. '''
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset"""
+        """cached dataset"""
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
@@ -27,15 +30,14 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        ''' Return page of dataset. '''
-        assert isinstance(page, int) and isinstance(page_size, int)
-        assert page > 0 and page_size > 0
+        """this is the method"""
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
-        indices = index_range(page, page_size)
-        start = indices[0]
-        end = indices[1]
+        start, end = index_range(page, page_size)
+        data = self.dataset()
 
-        try:
-            return self.dataset()[start:end]
-        except IndexError:
+        if start >= len(data):
             return []
+
+        return data[start:end]
