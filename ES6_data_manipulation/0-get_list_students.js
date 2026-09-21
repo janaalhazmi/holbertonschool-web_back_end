@@ -11,9 +11,9 @@ export default function getListStudentsIds() {
             location: 'Columbia'
         },
         {
-            id: 3,
-            firstName: 'Robert',
-            location: 'New York'
+            id: 5,
+            firstName: 'Serena',
+            location: 'San Francisco'
         }
     ];
 }
