@@ -1,18 +1,11 @@
-import readline from 'node:readline';
+#!/usr/bin/node
 
-// Create the interface tied to standard input and output
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-  terminal: false
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
+
+process.stdin.on('data', (data) => {
+  process.stdout.write(`Your name is: ${data.toString().trim()}\n`);
 });
 
-// Listens for every complete line fed into stdin
-rl.on('INPUT', (INPUT) => {
-  console.log(`Your name is: ${INPUT}`);
-});
-
-// Listens for the end of the input (EOF / Ctrl+D)
-rl.on('close', () => {
-  console.log('This important software is now closing');
+process.on('exit', () => {
+  process.stdout.write('This important software is now closing\n');
 });
